@@ -1,0 +1,21 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create post</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {% for f in form %}
+        <p><label>{{ f.label }}: </label>{{ f }}</p>
+        {% endfor %}
+
+        <button type="submit">Add a news post</button>
+
+    </form>
+    <a target="_blank" href="/news/"></a>
+</body>
+</html>
