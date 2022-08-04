@@ -1,0 +1,16 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>Post</title>
+</head>
+<body>
+{% if post %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.created }}</p>
+    <p>{{ post.text }}</p>
+{% endif %}
+<a target="_blank" href="/news/"></a>
+</body>
+</html>
