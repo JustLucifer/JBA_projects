@@ -1,4 +1,5 @@
 from coffee import Espresso, Latte, Cappuccino
+from textwrap import dedent
 import sys
 
 
@@ -15,17 +16,19 @@ class CoffeeMachine:
         self.cappuccino = Cappuccino(200, 12, 6, 1, 100)
 
     def show(self):
-        print(f"The coffee machine has:\n"
-              f"{self.water} ml of water\n"
-              f"{self.milk} ml of milk\n"
-              f"{self.beans} g of coffee beans\n"
-              f"{self.cups} disposable cups\n"
-              f"${self.money} of money\n")
+        print(dedent(f"""\
+            The coffee machine has:
+            {self.water} ml of water
+            {self.milk} ml of milk
+            {self.beans} g of coffee beans
+            {self.cups} disposable cups
+            ${self.money} of money"""))
 
     def buy_coffee(self):
-        print('What do you want to buy?'
-              ' 1 - espresso, 2 - latte, 3 - cappuccino,'
-              ' back - to main menu:')
+        print(dedent("""\
+            What do you want to buy?
+            1 - espresso, 2 - latte, 3 - cappuccino,
+            back - to main menu:"""))
         coffee = input()
         if coffee != 'back':
             self.make_coffee(coffee=coffee)
@@ -41,13 +44,13 @@ class CoffeeMachine:
 
     def calc_amount(self, coffee):
         if self.water < coffee.water:
-            print(f"Not enough amount of water!")
+            print("Not enough amount of water!")
         elif self.beans < coffee.beans:
-            print(f"Not enough amount of beans!")
+            print("Not enough amount of beans!")
         elif self.milk < coffee.milk:
-            print(f"Not enough amount of milk!")
+            print("Not enough amount of milk!")
         elif self.cups < coffee.cups:
-            print(f"Not enough amount of cups!")
+            print("Not enough amount of cups!")
         else:
             print('I have enough resources, making you a coffee!\n')
             self.water -= coffee.water
