@@ -6,25 +6,20 @@ class Hangman:
     def greeting(self):
         print('H A N G M A N')
 
-
     def choose_random_word(self):
         words = ('python', 'java', 'swift', 'javascript')
         return choice(words)
 
-
     def create_hint(self, word):
         self.hint = ['-' for _ in range(len(word))]
 
-
     def output_hint(self):
         print('\n' + ''.join(self.hint))
-
 
     def check_win(self):
         if self.hint.count('-') == 0:
             return True
         return False
-
 
     def another_letter_check(self, word, letter):
         if letter in self.repeted_letters:
@@ -40,7 +35,6 @@ class Hangman:
                 self.repeted_letters.append(letter)
                 self.lives -= 1
 
-
     def guess_letter(self, word):
         word = list(word)
         self.output_hint()
@@ -55,7 +49,6 @@ class Hangman:
             print('Please, enter a lowercase letter from the English alphabet.')
         else:
             self.another_letter_check(word=word, letter=letter)
-
 
     def gameplay(self):
         self.lives = 8
@@ -75,7 +68,6 @@ class Hangman:
             print('You lost!')
             self.lose_score += 1
 
-
     def menu(self):
         action = input('Type "play" to play the game, '
                        '"results" to show the scoreboard, and "exit" to quit: ')
@@ -87,7 +79,6 @@ class Hangman:
             print(f'You lost: {self.lose_score} times.')
         elif action == 'exit':
             sys.exit()
-
 
     def main(self):
         self.win_score = 0
