@@ -7,7 +7,7 @@ def output_grid():
 
 
 def create_grid():
-    return [' ' for x in range(9)]
+    return [' ' for _ in range(9)]
 
 
 def read_user_move():
@@ -43,32 +43,20 @@ def update_grid(x, y):
         return False
 
 
-def check_for_winner(*row):
-    winner = ''
-    for lst in row:
-        for el in lst:
-            if set(el) == {'X'}:
-                winner = 'X'
-            elif set(el) == {'O'}:
-                winner = 'O'
-    return winner
-
-
 def analyze_grid():
-    horizontal = [cells[:3], cells[3:6], cells[6:]]
-    vertical = [cells[:7:3], cells[1::3], cells[2::3]]
-    diagonal = [cells[::4], cells[2:8:2]]
-    count_spaces = cells.count(' ')
-    winner = check_for_winner(horizontal, vertical, diagonal)
+    combinations = [cells[:3], cells[3:6], cells[6:],  # horizontal
+                    cells[:7:3], cells[1::3], cells[2::3],  # vertical
+                    cells[::4], cells[2:8:2]]  # diagonal
 
-    if winner != '':
-        output_grid()
-        if winner == 'X':
+    for el in combinations:
+        if set(el) == {'X'}:
             print('X wins')
-        elif winner == 'O':
+            return True
+        elif set(el) == {'O'}:
             print('O wins')
-        return True
-    elif count_spaces == 0:
+            return True
+    
+    if cells.count(' ') == 0:
         output_grid()
         print('Draw')
         return True
