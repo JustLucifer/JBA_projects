@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask import flash, get_flashed_messages
-from flask import request, redirect
+from flask import flash, request, redirect
 from weather import get_weather
 import sys
 
@@ -27,11 +26,10 @@ def index():
 
     lst_cities = City.query.all()
     for city in lst_cities:
-        weather_dict = get_weather()
+        weather_dict = get_weather(city.name)
         weather_dict['id'] = city.id
         cities_dict[city.name] = weather_dict
     return render_template('index.html', weather=cities_dict)
-
 
 def add_city_to_db(city):
     test_lst = ("The city that doesn't exist!", " ", "", "123123")
@@ -57,7 +55,6 @@ def delete(city_id):
     return redirect('/')
 
 
-# don't change the following way to run flask:
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         arg_host, arg_port = sys.argv[1].split(':')
