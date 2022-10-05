@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask import flash, request, redirect
+from weather_api import BASE_URL, API_KEY
 from weather import get_weather
+import requests as r
 import sys
 
 app = Flask(__name__)
@@ -27,24 +29,30 @@ def index():
     lst_cities = City.query.all()
     for city in lst_cities:
         weather_dict = get_weather(city.name)
+        if weather_dict is None:
+            abort(500, 'Internal Server Error')
         weather_dict['id'] = city.id
         cities_dict[city.name] = weather_dict
     return render_template('index.html', weather=cities_dict)
 
+
 def add_city_to_db(city):
-    test_lst = ("The city that doesn't exist!", " ", "", "123123")
     cities = City.query.all()
-    if city in test_lst:
-        flash("The city doesn't exist!")
+
+    for i in cities:
+        if city == i.name:
+            flash("The city has already been added to the list!")
+            break
     else:
-        for i in cities:
-            if city == i.name:
-                flash("The city has already been added to the list!")
-                break
-        else:
+        request_url = f'{BASE_URL}?appid={API_KEY}&q={city}'
+        response = r.get(request_url)
+
+        if response.status_code == 200:
             city = City(name=city)
             db.session.add(city)
             db.session.commit()
+        else:
+            flash("The city doesn't exist!")
 
 
 @app.route('/delete/<city_id>', methods=['GET', 'POST'])

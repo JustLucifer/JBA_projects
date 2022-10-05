@@ -1,6 +1,6 @@
 import requests as r
 import datetime
-from api import BASE_URL, API_KEY
+from weather_api import BASE_URL, API_KEY
 
 
 def get_weather(city):
@@ -12,24 +12,22 @@ def get_weather(city):
         state = data.get('weather')[0]['description'].capitalize()
         temp = round(data.get('main')['temp'] - 273.15, 2)
         local_time = get_proper_time(data=data)
-        card = get_card_by_time(int(local_time))
+        card = get_card_by_time(float(local_time))
         return {'degrees': temp, 'card': card, 'state': state}
-    else:
-        print('Error occurred')
-
+    return None
 
 def get_proper_time(data):
-    tz=datetime.timezone(datetime.timedelta(seconds=int(data['timezone'])))
+    tz = datetime.timezone(datetime.timedelta(seconds=int(data['timezone'])))
     t = datetime.datetime.now(tz=tz).time()
-    return '{}:{}'.format(t.hour, t.minute).split(':')[0]
+    return '{}.{}'.format(t.hour, t.minute)
 
 
 def get_card_by_time(hours):
     cards = ('night', 'day', 'evening-morning')
     if 0 <= hours <= 5:
         card = cards[0]
-    elif 5 < hours < 17:
-        card = cards[1]
-    else:
+    elif 5 < hours < 10 or 18 <= hours <= 24:
         card = cards[2]
+    else:
+        card = cards[1]
     return card
