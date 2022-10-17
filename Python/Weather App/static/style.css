@@ -1,3 +1,18 @@
+.header {
+	font-size: 40px;
+	text-shadow: 0px 0px 4px rgba(156, 156, 156, 0.3);
+	font-style: italic;
+	text-align: center;
+	padding-top: 50px;
+	color: rgb(157, 131, 180);
+}
+
+@media (min-width: 300px) and (max-width: 1000px) {
+	.header {
+		font-size: 30px;
+	}
+}
+
 .cards {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
@@ -8,6 +23,7 @@
 	margin-bottom: 2vw;
 	justify-content: center;
 }
+
 .card {
 	padding: 0;
 	border: none;
@@ -16,7 +32,8 @@
 	border-radius: 0.5vw !important;
 	color: white;
 	font-weight: 600;
-	text-shadow: 0px 0px 1vw rgba(0,0,0,0.7);
+	text-shadow: 0px 0px 1vw rgba(78, 78, 78, 0.5);
+	margin-bottom: 50px;
 }
 
 html, body {
@@ -30,7 +47,7 @@ html, body {
 }
 
 .form {
-	margin-top: 7%;
+	margin-top: 5%;
 	padding-left: 10%;
 	padding-right: 10%;
 	text-align: center;
@@ -44,7 +61,14 @@ input {
 	height: 3vw;
 	width: 40vw;
 	padding-left: 0.5vw;
-	box-shadow: 0 0 1vw rgba(0,0,0,0.5);
+	box-shadow: 0 0 1vw rgba(0,0,0,0.3);
+	font-size: 14px;
+	background-color: rgb(48, 48, 48);
+	color: white;
+}
+
+input::placeholder {
+	color: white;
 }
 
 .submit-button {
@@ -55,7 +79,9 @@ input {
 	outline: none !important;
 	background-color: #373252;
 	color: white;
-	box-shadow: 0 0 1vw rgba(0,0,0,0.5);
+	box-shadow: 0 0 1vw rgba(0,0,0,0.3);
+	cursor: pointer;
+	font-size: 14px;
 }
 
 .night {
@@ -88,19 +114,21 @@ input {
 	text-align: center;
 	font-size: 2.5vw;
 	height: 10%;
+	color: white;
 }
 
 .day > .degrees {
-	color: black;
+	color: white;
 }
 
 .state {
 	text-align: center;
 	font-size: 1.5vw;
+	color: white;
 }
 
 .day > .state {
-	color: black;
+	color: white;
 }
 
 .city {
@@ -114,7 +142,7 @@ input {
 }
 
 .day > .state {
-	color: black;
+	color: white;
 }
 
 
@@ -143,10 +171,12 @@ input {
 	padding: 0;
 	border: none;
 	color: white;
+	cursor: pointer;
+	font-size: 16px;
 }
 
 .day > .delete-wrapper > form > .delete-button {
-	color: black !important;
+	color: white !important;
 }
 
 .delete-button:focus, .delete-button:active {
