@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+		<link rel="stylesheet" href="main.css">
+    <title>First Landing</title>
+</head>
+<body>	
+	<header>
+    <nav>
+      <a class="img-link" href="#home">
+        <img class="logo" src="/assets/logo.jpg" title="Logo" alt="Logo of the site">
+      </a>
+      <a class="home-link" href="#home">Home</a>
+      <a class="product-link" href="#product">Product</a>
+      <a class="contact-link" href="#contact">Contact</a>
+    </nav>
+  </header>
+	<main>
+    <div id="home">
+      <div class="home__container">
+        <h1>First landing</h1>
+        <p>Aliqua labore magna qui do consectetur aute. <br> Nostrud pariatur
+          officia occaecat tempor excepteur cillum consectetur eiusmod duis
+          consectetur aliquip laboris ad.<br> Minim sunt quis in et.
+          Consectetur duis ullamco dolore exercitation veniam ipsum aliquip qui. <br>
+          Fugiat fugiat incididunt culpa eu voluptate consequat.</p>
+        <a href="#product">Coming soon</a>
+      </div>
+    </div>
+    <!-- ROW -->
+    <div id="product">
+      <!-- COLUMN -->
+      <div id="col-1" class="product-container">
+        <div>
+          <h1>Product 1</h1>
+          <p>Fugiat duis sint nostrud in do qui sint duis.</p>
+        </div>
+        <img src="../assets/product1.jpg" title="product1" alt="product 1">
+      </div>
+      <!-- COLUMN -->
+      <div id="col-2" class="product-container">
+        <div>
+          <h1>Product 2</h1>
+          <p>Deserunt ullamco excepteur ea duis ipsum </p>
+        </div>
+        <img src="../assets/product2.jpg" title="product2" alt="product 2">
+      </div>
+    </div>
+  </main>
+  <footer class="footer">    
+    <div id="contact">
+      <div id="contact-col1">
+        <a id="footer_link_logo" href="#home"><img src="img/coffee-beans2.jpg" class="img-logo" width="64" height="64" title="logo" alt="logo-img"></a>
+        <nav class="nav-footer">
+          <a id="footer_link_home" href="#home">Home</a>
+          <a id="footer_link_product" href="#product">Product</a>
+          <a id="footer_link_contact" href="#contact">Contact</a>
+        </nav>
+        <p>2022</p>
+      </div>
+      <div id="contact-col2">
+        <form>
+          <h5>Sign up for the waiting list</h5>
+          <div class="contact-email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="you@example.com" required >
+          </div>
+          <div>            
+            <label for="checkbox"><input type="checkbox" name="checkbox" id="checkbox" required >I agree to receive emails</label>
+          </div>
+          <button class="button-submit" type="submit">Sign up</button>
+        </form>
+      </div>
+    </div>
+  </footer> 
+</body>
+</html>
